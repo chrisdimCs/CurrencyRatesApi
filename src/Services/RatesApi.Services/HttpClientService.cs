@@ -20,8 +20,8 @@ namespace RatesApi.Services
         {
             try
             {
-                string currenciesString = string.Join(",", currencies);
                 var apiKey = _configuration["AppSettings:ApiKey"];
+                string currenciesString = string.Join(",", currencies);
                 var convertBaseUrl = _configuration["AppSettings:ConvertBaseUrl"];
                 var currenciesbaseUrl = _configuration["AppSettings:CurrenciesBaseUrl"];
                 var latestEcbRatesBaseUrl = _configuration["AppSettings:GetLatestBaseUrl"];
