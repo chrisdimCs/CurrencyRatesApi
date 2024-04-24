@@ -1,0 +1,6 @@
+@RatesWebApi_HostAddress = http://localhost:5029
+
+GET {{RatesWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
