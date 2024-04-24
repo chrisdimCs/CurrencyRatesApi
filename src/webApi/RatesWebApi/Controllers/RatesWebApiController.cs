@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RatesInterfaces;
 
 namespace RatesWebApi.Controllers
@@ -19,6 +20,8 @@ namespace RatesWebApi.Controllers
             try
             {
                 var latestEcbRates = await _httpClientService.GetLatestEcbRates();
+                //string jsonRates = JsonConvert.SerializeObject(latestEcbRates);
+                //return Ok(jsonRates);
                 return Ok(latestEcbRates);
             }
             catch (Exception)

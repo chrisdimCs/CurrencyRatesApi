@@ -20,17 +20,29 @@ namespace RatesApi.Services
         {
             try
             {
-                var apiKey = _configuration["AppSettings:ApiKey"];
-                var latestEcbRatesBaseUrl = _configuration["AppSettings:GetLatestBaseUrl"];
-                var convertBaseUrl = _configuration["AppSettings:ConvertBaseUrl"];
-
-                HttpResponseMessage response = await _httpClient.GetAsync($"{latestEcbRatesBaseUrl}apiKey={apiKey}");
-
-                string jsonResponse = await response.Content.ReadAsStringAsync();
-                LatestEcbRatesResponce latestEcbRatesResponse = JsonConvert.DeserializeObject<LatestEcbRatesResponce>(jsonResponse)!; // ! for the null warning (fix it)
-
-                var date = latestEcbRatesResponse.Date;
                 string currenciesString = string.Join(",", currencies);
+                var apiKey = _configuration["AppSettings:ApiKey"];
+                var convertBaseUrl = _configuration["AppSettings:ConvertBaseUrl"];
+                var currenciesbaseUrl = _configuration["AppSettings:CurrenciesBaseUrl"];
+                var latestEcbRatesBaseUrl = _configuration["AppSettings:GetLatestBaseUrl"];
+
+                // Create a list of currencies from the ApiCall response so we can check for wrong user input
+                HttpResponseMessage response = await _httpClient.GetAsync($"{currenciesbaseUrl}apiKey={apiKey}");
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                List<Currencies> currenciesList = JsonConvert.DeserializeObject<List<Currencies>>(jsonResponse)!; // ! for the null warning (fix it)
+
+                bool isValidInput = currenciesList.Any(cl => cl.Symbol == from) && currencies.All(c => currenciesList.Any(cl => cl.Symbol == c));
+                if(!isValidInput) 
+                {
+                    Console.WriteLine("Wrong Input");
+                }
+
+                // Call getLatestecbRates to get the latest date
+                response = await _httpClient.GetAsync($"{latestEcbRatesBaseUrl}apiKey={apiKey}");
+                jsonResponse = await response.Content.ReadAsStringAsync();
+                LatestEcbRatesResponce latestEcbRatesResponse = JsonConvert.DeserializeObject<LatestEcbRatesResponce>(jsonResponse)!; // ! for the null warning (fix it)
+                var date = latestEcbRatesResponse.Date;
+
                 string convertUrl = $"{convertBaseUrl}apiKey={apiKey}&from={from}&amount={amount}&date={date}&currencies={currenciesString}";
 
                 response = await _httpClient.GetAsync($"{convertUrl}");
@@ -40,9 +52,10 @@ namespace RatesApi.Services
 
                 return latestEcbRatesResponse;
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
-                throw new Exception();
+                Console.WriteLine($"HTTP request error: {ex.Message}");
+                throw;
             }
         }
 
