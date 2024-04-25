@@ -1,0 +1,10 @@
+scaffolding entity framework command:
+
+--Scaffold-DbContext "Server=(localdb)\RatesDb;Database=RatesDb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir Data -OutputDir Entities -project RatesData
+
+
+
+
+
+error handling
+logging

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RatesModels
 {
-    public class LatestEcbRatesResponce
+    public class EcbRatesDto
     {
         public string? Base { get; set; }
         public string? Date { get; set; }

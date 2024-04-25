@@ -13,13 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Intefaces", "Intefaces", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{DA5E941B-EBE0-4985-BCD1-5C95F9FB65C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesWebApi", "..\RatesAPI\src\webApi\RatesWebApi\RatesWebApi.csproj", "{B79D5971-1BF6-40D3-AD39-99DB024031AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesWebApi", "src\webApi\RatesWebApi\RatesWebApi.csproj", "{B79D5971-1BF6-40D3-AD39-99DB024031AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesApi.Services", "..\RatesAPI\src\Services\RatesApi.Services\RatesApi.Services.csproj", "{13FA4AA2-6E91-429A-84A6-599F500B8E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesApi.Services", "src\Services\RatesApi.Services\RatesApi.Services.csproj", "{13FA4AA2-6E91-429A-84A6-599F500B8E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesInterfaces", "..\RatesAPI\src\Interfaces\RatesInterfaces\RatesInterfaces.csproj", "{7CEDBCCB-1AF1-4B06-B093-7FC48B5D023B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesInterfaces", "src\Interfaces\RatesInterfaces\RatesInterfaces.csproj", "{7CEDBCCB-1AF1-4B06-B093-7FC48B5D023B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesModels", "..\RatesAPI\src\Models\RatesModels\RatesModels.csproj", "{DA77E571-825B-431D-8BD6-95681FE26C84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesModels", "src\Models\RatesModels\RatesModels.csproj", "{DA77E571-825B-431D-8BD6-95681FE26C84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C103C76A-95F0-4DF5-82A3-408DFD690017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesData", "src\Data\RatesData\RatesData.csproj", "{A0E41D99-848F-48BB-B0CB-30C20D489190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesDataCommand", "src\Data\RatesDataCommand\RatesDataCommand.csproj", "{F215281C-5944-4704-92A4-FD88EE558DD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,14 @@ Global
 		{DA77E571-825B-431D-8BD6-95681FE26C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA77E571-825B-431D-8BD6-95681FE26C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA77E571-825B-431D-8BD6-95681FE26C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0E41D99-848F-48BB-B0CB-30C20D489190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E41D99-848F-48BB-B0CB-30C20D489190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E41D99-848F-48BB-B0CB-30C20D489190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E41D99-848F-48BB-B0CB-30C20D489190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F215281C-5944-4704-92A4-FD88EE558DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F215281C-5944-4704-92A4-FD88EE558DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F215281C-5944-4704-92A4-FD88EE558DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F215281C-5944-4704-92A4-FD88EE558DD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +70,9 @@ Global
 		{13FA4AA2-6E91-429A-84A6-599F500B8E2C} = {E6333EF1-3A65-407A-BDD6-E5D8046C95C6}
 		{7CEDBCCB-1AF1-4B06-B093-7FC48B5D023B} = {04753D89-C839-461F-8628-E5D9B43D7138}
 		{DA77E571-825B-431D-8BD6-95681FE26C84} = {DA5E941B-EBE0-4985-BCD1-5C95F9FB65C4}
+		{C103C76A-95F0-4DF5-82A3-408DFD690017} = {0C412619-AD2E-4427-B2B9-CD00B734299A}
+		{A0E41D99-848F-48BB-B0CB-30C20D489190} = {C103C76A-95F0-4DF5-82A3-408DFD690017}
+		{F215281C-5944-4704-92A4-FD88EE558DD0} = {C103C76A-95F0-4DF5-82A3-408DFD690017}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4760F4C-4933-499B-BC6D-6F02361BA182}

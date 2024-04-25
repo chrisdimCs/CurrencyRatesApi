@@ -18,14 +18,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\RatesDataCommand\RatesDataCommand.csproj" />
-    <ProjectReference Include="..\..\Interfaces\RatesInterfaces\RatesInterfaces.csproj" />
     <ProjectReference Include="..\..\Models\RatesModels\RatesModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

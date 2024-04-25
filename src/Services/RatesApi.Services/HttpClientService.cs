@@ -16,7 +16,7 @@ namespace RatesApi.Services
             _configuration = configuration;
         }
 
-        public async Task<LatestEcbRatesResponce> ConvertRates(string from, List<string> currencies, decimal amount)
+        public async Task<EcbRatesDto> ConvertRates(string from, List<string> currencies, decimal amount)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace RatesApi.Services
                 // Call getLatestecbRates to get the latest date
                 response = await _httpClient.GetAsync($"{latestEcbRatesBaseUrl}apiKey={apiKey}");
                 jsonResponse = await response.Content.ReadAsStringAsync();
-                LatestEcbRatesResponce latestEcbRatesResponse = JsonConvert.DeserializeObject<LatestEcbRatesResponce>(jsonResponse)!; // ! for the null warning (fix it)
+                EcbRatesDto latestEcbRatesResponse = JsonConvert.DeserializeObject<EcbRatesDto>(jsonResponse)!; // ! for the null warning (fix it)
                 var date = latestEcbRatesResponse.Date;
 
                 string convertUrl = $"{convertBaseUrl}apiKey={apiKey}&from={from}&amount={amount}&date={date}&currencies={currenciesString}";
@@ -48,7 +48,7 @@ namespace RatesApi.Services
                 response = await _httpClient.GetAsync($"{convertUrl}");
 
                 jsonResponse = await response.Content.ReadAsStringAsync();
-                latestEcbRatesResponse = JsonConvert.DeserializeObject<LatestEcbRatesResponce>(jsonResponse)!; // ! for the null warning (fix it)
+                latestEcbRatesResponse = JsonConvert.DeserializeObject<EcbRatesDto>(jsonResponse)!; // ! for the null warning (fix it)
 
                 return latestEcbRatesResponse;
             }
@@ -63,7 +63,7 @@ namespace RatesApi.Services
         /// Get the Json response from RatesWebApi, convert it to the LatestEcbRatesResponce object and return it. 
         /// </summary>
         /// <returns></returns>
-        public async Task<LatestEcbRatesResponce> GetLatestEcbRates()
+        public async Task<EcbRatesDto> GetLatestEcbRates()
         {
             try
             {
@@ -73,7 +73,7 @@ namespace RatesApi.Services
                 HttpResponseMessage response = await _httpClient.GetAsync($"{latestEcbRatesBaseUrl}apiKey={apiKey}");
 
                 string jsonResponse = await response.Content.ReadAsStringAsync();
-                LatestEcbRatesResponce latestEcbRatesResponse = JsonConvert.DeserializeObject<LatestEcbRatesResponce>(jsonResponse)!; // ! for the null warning (fix it)
+                EcbRatesDto latestEcbRatesResponse = JsonConvert.DeserializeObject<EcbRatesDto>(jsonResponse)!; // ! for the null warning (fix it)
 
                 return latestEcbRatesResponse;
             }

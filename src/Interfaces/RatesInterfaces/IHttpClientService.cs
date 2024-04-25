@@ -4,7 +4,7 @@ namespace RatesInterfaces
 {
     public interface IHttpClientService
     {
-        Task<LatestEcbRatesResponce> GetLatestEcbRates();
-        Task<LatestEcbRatesResponce> ConvertRates(string from, List<string> currencies, decimal amount);
+        Task<EcbRatesDto> GetLatestEcbRates();
+        Task<EcbRatesDto> ConvertRates(string from, List<string> currencies, decimal amount);
     }
 }
