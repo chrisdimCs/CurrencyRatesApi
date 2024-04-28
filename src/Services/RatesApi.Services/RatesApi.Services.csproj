@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\Models\RatesModels\RatesModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helper\" />
+  </ItemGroup>
+
 </Project>

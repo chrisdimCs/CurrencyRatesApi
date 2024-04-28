@@ -41,3 +41,4 @@ public partial class RatesDbContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
+

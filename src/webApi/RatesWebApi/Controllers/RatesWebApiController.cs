@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RatesInterfaces;
+using RatesModels;
 
 namespace RatesWebApi.Controllers
 {
@@ -30,11 +31,11 @@ namespace RatesWebApi.Controllers
             }
         }
         [HttpGet("convertRates")]
-        public async Task<IActionResult> ConvertRates([FromQuery] string from, [FromQuery] List<string> currencies, [FromQuery] decimal amount)
+        public async Task<IActionResult> ConvertRates([FromQuery] ConvertRequest convertRequest)
         {
             try
             {
-                var convert = await _httpClientService.ConvertRates(from, currencies, amount);
+                var convert = await _httpClientService.ConvertRates(convertRequest);
                 return Ok(convert);
             }
             catch (Exception)

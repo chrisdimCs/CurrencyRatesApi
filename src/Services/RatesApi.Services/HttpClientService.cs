@@ -16,12 +16,12 @@ namespace RatesApi.Services
             _configuration = configuration;
         }
 
-        public async Task<EcbRatesDto> ConvertRates(string from, List<string> currencies, decimal amount)
+        public async Task<EcbRatesDto> ConvertRates(ConvertRequest convertRequest)
         {
             try
             {
                 var apiKey = _configuration["AppSettings:ApiKey"];
-                string currenciesString = string.Join(",", currencies);
+                string currenciesString = string.Join(",", convertRequest.Currencies);
                 var convertBaseUrl = _configuration["AppSettings:ConvertBaseUrl"];
                 var currenciesbaseUrl = _configuration["AppSettings:CurrenciesBaseUrl"];
                 var latestEcbRatesBaseUrl = _configuration["AppSettings:GetLatestBaseUrl"];
@@ -31,7 +31,7 @@ namespace RatesApi.Services
                 string jsonResponse = await response.Content.ReadAsStringAsync();
                 List<Currencies> currenciesList = JsonConvert.DeserializeObject<List<Currencies>>(jsonResponse)!; // ! for the null warning (fix it)
 
-                bool isValidInput = currenciesList.Any(cl => cl.Symbol == from) && currencies.All(c => currenciesList.Any(cl => cl.Symbol == c));
+                bool isValidInput = currenciesList.Any(cl => cl.Symbol == convertRequest.From) && convertRequest.Currencies.All(c => currenciesList.Any(cl => cl.Symbol == c));
                 if(!isValidInput) 
                 {
                     Console.WriteLine("Wrong Input");
@@ -43,7 +43,7 @@ namespace RatesApi.Services
                 EcbRatesDto latestEcbRatesResponse = JsonConvert.DeserializeObject<EcbRatesDto>(jsonResponse)!; // ! for the null warning (fix it)
                 var date = latestEcbRatesResponse.Date;
 
-                string convertUrl = $"{convertBaseUrl}apiKey={apiKey}&from={from}&amount={amount}&date={date}&currencies={currenciesString}";
+                string convertUrl = $"{convertBaseUrl}apiKey={apiKey}&from={convertRequest.From}&amount={convertRequest.Amount}&date={date}&currencies={currenciesString}";
 
                 response = await _httpClient.GetAsync($"{convertUrl}");
 
