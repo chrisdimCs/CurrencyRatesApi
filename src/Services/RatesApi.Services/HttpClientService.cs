@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using RatesDataCommand.Interfaces;
 using RatesDataCommand.Models;
 using RatesInterfaces;
 using RatesModels;
@@ -11,12 +12,14 @@ namespace RatesApi.Services
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
         private readonly IConvertUrlHelper _convertUrlHelper;
+        private readonly IConvertRatesRepository _convertRatesRepository;
 
-        public HttpClientService(HttpClient httpClient, IConfiguration configuration, IConvertUrlHelper convertUrlHelper)
+        public HttpClientService(HttpClient httpClient, IConfiguration configuration, IConvertUrlHelper convertUrlHelper, IConvertRatesRepository convertRatesRepository)
         {
             _httpClient = httpClient;
             _configuration = configuration;
             _convertUrlHelper = convertUrlHelper;
+            _convertRatesRepository = convertRatesRepository;
         }
 
         public async Task<EcbRatesDto> ConvertRates(ConvertRequest convertRequest)
@@ -62,6 +65,15 @@ namespace RatesApi.Services
                 Console.WriteLine($"HTTP request error: {ex.Message}");
                 throw;
             }
+        }
+
+        public async Task<EcbRatesDto> SaveConvertedRates(ConvertRequest convertRequest)
+        {
+            EcbRatesDto convertResponse = await ConvertRates(convertRequest);
+
+            await _convertRatesRepository.AddConvert(convertResponse);
+
+            return convertResponse;
         }
     }
 }

@@ -40,5 +40,18 @@ namespace RatesWebApi.Controllers
                 throw;
             }
         }
+        [HttpPost("saveConvertRates")]
+        public async Task<IActionResult> SaveConvertRates([FromQuery] ConvertRequest convertRequest)
+        {
+            try
+            {
+                var convert = await _httpClientService.SaveConvertedRates(convertRequest);
+                return Ok(convert);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
