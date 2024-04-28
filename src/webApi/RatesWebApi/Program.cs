@@ -2,12 +2,17 @@ using RatesInterfaces;
 using RatesApi.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using RatesApi.Services.Helper;
+using RatesDataCommand.Interfaces;
+using RatesDataCommand.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 // Add services to the container.
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
+builder.Services.AddScoped<IConvertUrlHelper, ConvertUrlHelper>();
+builder.Services.AddScoped<IConvertRatesRepository, ConvertRatesRepository>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //builder.Services.AddDbContext<RatesDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddControllers();

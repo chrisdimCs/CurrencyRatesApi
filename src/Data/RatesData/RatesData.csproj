@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Models\RatesModels\RatesModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Data\" />
   </ItemGroup>

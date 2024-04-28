@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesModels", "src\Models\R
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C103C76A-95F0-4DF5-82A3-408DFD690017}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesData", "src\Data\RatesData\RatesData.csproj", "{A0E41D99-848F-48BB-B0CB-30C20D489190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesData", "src\Data\RatesData\RatesData.csproj", "{A0E41D99-848F-48BB-B0CB-30C20D489190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatesDataCommand", "src\Data\RatesDataCommand\RatesDataCommand.csproj", "{F215281C-5944-4704-92A4-FD88EE558DD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RatesDataCommand", "src\Data\RatesDataCommand\RatesDataCommand.csproj", "{F215281C-5944-4704-92A4-FD88EE558DD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

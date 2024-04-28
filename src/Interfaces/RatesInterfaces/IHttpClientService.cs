@@ -1,4 +1,5 @@
-﻿using RatesModels;
+﻿using RatesDataCommand.Models;
+using RatesModels;
 
 namespace RatesInterfaces
 {
