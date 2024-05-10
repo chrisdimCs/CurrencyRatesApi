@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace RatesData.Entities;
+﻿namespace RatesData.Entities;
 
 public partial class EcbRate
 {

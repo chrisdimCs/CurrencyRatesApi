@@ -5,10 +5,17 @@ using System.Reflection;
 using RatesApi.Services.Helper;
 using RatesDataCommand.Interfaces;
 using RatesDataCommand.Repositories;
+using Microsoft.Extensions.Configuration;
+using RatesData.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 // Add services to the container.
+builder.Services.AddDbContext<RatesDbContext>(options =>
+{
+    options.UseSqlServer(connectionString);
+});
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 builder.Services.AddScoped<IConvertUrlHelper, ConvertUrlHelper>();

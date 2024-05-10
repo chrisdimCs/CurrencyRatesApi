@@ -26,7 +26,7 @@ namespace RatesApi.Services
         {
             try
             {
-                var convertUrl = _convertUrlHelper.GenerateConvertUrl(convertRequest);
+                var convertUrl = await _convertUrlHelper.GenerateConvertUrl(convertRequest);
 
                 HttpResponseMessage response = await _httpClient.GetAsync($"{convertUrl}");
 
@@ -71,7 +71,7 @@ namespace RatesApi.Services
         {
             EcbRatesDto convertResponse = await ConvertRates(convertRequest);
 
-            await _convertRatesRepository.AddConvert(convertResponse);
+            await _convertRatesRepository.InsertConvert(convertResponse);
 
             return convertResponse;
         }

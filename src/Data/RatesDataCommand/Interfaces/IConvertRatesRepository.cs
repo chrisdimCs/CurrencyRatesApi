@@ -4,6 +4,6 @@ namespace RatesDataCommand.Interfaces
 {
     public interface IConvertRatesRepository
     {
-        Task AddConvert(EcbRatesDto ecbRatesDto);
+        Task InsertConvert(EcbRatesDto ecbRatesDto);
     }
 }
