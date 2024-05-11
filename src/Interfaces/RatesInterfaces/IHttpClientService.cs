@@ -7,6 +7,6 @@ namespace RatesInterfaces
     {
         Task<EcbRatesDto> GetLatestEcbRates();
         Task<EcbRatesDto> ConvertRates(ConvertRequest convertRequest);
-        Task<EcbRatesDto> SaveConvertedRates(ConvertRequest convertRequest);
+        Task<EcbRatesDto> SaveRates();
     }
 }

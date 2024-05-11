@@ -31,10 +31,10 @@ namespace RatesDataCommand.Repositories
             try
             {
                 var ecbRatesEntity = _mapper.Map<EcbRate>(ecbRatesDto);
-
+                //await _context.EcbRates.AddAsync(ecbRatesEntity);
                 await _context.AddAsync<EcbRate>(ecbRatesEntity);
 
-                var result = _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {

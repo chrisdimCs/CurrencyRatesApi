@@ -10,8 +10,9 @@ namespace RatesDataCommand.MappingProfiles
         public MappingProfile()
         {
             CreateMap<EcbRatesDto, EcbRate>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(_ => Guid.NewGuid()))
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Base, opt => opt.MapFrom(source => source.Base))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(source => source.Date))
                 .ForMember(dest => dest.Rates, opt => opt.MapFrom(source => SerializeRates(source.Rates)))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow.ToString()));
         }

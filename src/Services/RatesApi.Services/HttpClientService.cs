@@ -67,9 +67,9 @@ namespace RatesApi.Services
             }
         }
 
-        public async Task<EcbRatesDto> SaveConvertedRates(ConvertRequest convertRequest)
+        public async Task<EcbRatesDto> SaveRates()
         {
-            EcbRatesDto convertResponse = await ConvertRates(convertRequest);
+            EcbRatesDto convertResponse = await GetLatestEcbRates();
 
             await _convertRatesRepository.InsertConvert(convertResponse);
 
